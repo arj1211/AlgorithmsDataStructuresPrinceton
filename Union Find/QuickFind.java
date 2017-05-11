@@ -20,8 +20,6 @@
  * 					id[p] = q ) 
  */
 
-
-
 import java.util.Scanner;
 
 public class QuickFind {
@@ -47,18 +45,18 @@ public class QuickFind {
 	boolean connected(int p, int q) {
 		return id[p] == id[q];
 	}
-	
+
 	public static void main(String[] args) {
-		Scanner sc= new Scanner(System.in);
+		Scanner sc = new Scanner(System.in);
 		int N = Integer.parseInt(sc.nextLine());
 		QuickFind qf = new QuickFind(N);
 		String[] s = new String[2];
-		while(true)
-		{
-			s[0]=sc.nextLine().trim();
-			if (s[0].toLowerCase()=="x") break;
-			s=s[0].split(" ");
-			qf.union(Integer.parseInt(s[0]),Integer.parseInt(s[1]));
+		while (true) {
+			s[0] = sc.nextLine().trim();
+			if (s[0].toLowerCase() == "x")
+				break;
+			s = s[0].split(" ");
+			qf.union(Integer.parseInt(s[0]), Integer.parseInt(s[1]));
 		}
 	}
 }
