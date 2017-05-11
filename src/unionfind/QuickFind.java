@@ -20,8 +20,6 @@
  * 					to p (including p itself, so
  * 					id[p] = q )
  * 
- * 
- * 
  */
 
 
@@ -42,7 +40,13 @@ public class QuickFind {
 	
 	void union(int p, int q)
 	{
-		
+		if (!connected(p,q))
+		{
+			for (int i =1; i<=id.length; i++)
+			{
+				if (id[i]==p) id[i]=q;
+			}
+		}
 	}
 	
 	boolean connected(int p, int q)
