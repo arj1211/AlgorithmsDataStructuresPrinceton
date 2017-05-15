@@ -89,6 +89,9 @@ public class QuickUnion
 			qu.union(p,q);
 		}
 		
-		
+		for (int i=0;i<id.length;i++)
+		{
+			System.out.println(i+" "+id[i]);
+		}
 	}
 }
