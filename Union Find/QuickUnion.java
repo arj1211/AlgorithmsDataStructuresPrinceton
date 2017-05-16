@@ -23,7 +23,7 @@ import java.util.Scanner;
  * 2. if root(p)==root(q) then p and q connected, else not connected
  * 
  * 3. when creating a union between p and q, 
- * 		id[root(p)] = id[root(q)] 
+ * 		id[root(p)] = root(q) 
  */
 
 public class QuickUnion
