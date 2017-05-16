@@ -12,7 +12,7 @@ import java.util.Scanner;
  * 
  * Union: when merging components containing p and q,
  * root of p becomes 'child' of root of q 
- * 		--> id of p's root = id of q's root 
+ * 		--> id of p's root = q's root 
  * 
  * Steps:
  * 
