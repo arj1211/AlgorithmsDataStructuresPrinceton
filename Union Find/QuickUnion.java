@@ -62,11 +62,10 @@ public class QuickUnion
 	void union(int p, int q)
 	{
 		// combine components containing p and q
-		id[root(p)] = id[root(q)];
+		id[root(p)] = root(q);
 		/*
-		 * id of root(p) is equal to root(p) id of root(q) is equal to root(q)
-		 * set root of p to now equal rot of q, so the root of p is now a child
-		 * of the component containing q, whose root is root(q)
+		 * id of root(p) is equal to root(q)
+		 * set parent of root of p to root of q, so the root of p is now a child of root(q)
 		 */
 	}
 
@@ -95,3 +94,33 @@ public class QuickUnion
 		}
 	}
 }
+
+
+/*
+
+Sample Input:
+
+4 3
+3 8
+6 5
+9 4
+2 1
+5 0
+7 2
+6 1
+7 3
+
+Output:
+
+node: 0, parent: 1, root: 8
+node: 1, parent: 8, root: 8
+node: 2, parent: 1, root: 8
+node: 3, parent: 8, root: 8
+node: 4, parent: 3, root: 8
+node: 5, parent: 0, root: 8
+node: 6, parent: 5, root: 8
+node: 7, parent: 1, root: 8
+node: 8, parent: 8, root: 8
+node: 9, parent: 8, root: 8
+
+*/
