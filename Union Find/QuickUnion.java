@@ -91,7 +91,7 @@ public class QuickUnion
 		
 		for (int i=0;i<id.length;i++)
 		{
-			System.out.println(i+" "+id[i]);
+			System.out.println("node: "+i+", parent: "+id[i]+", root: "+qu.root(i));
 		}
 	}
 }
