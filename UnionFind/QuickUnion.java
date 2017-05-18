@@ -1,3 +1,5 @@
+package UnionFind;
+
 import java.util.Scanner;
 
 /*
@@ -100,6 +102,7 @@ public class QuickUnion
 
 Sample Input:
 
+10
 4 3
 3 8
 6 5
@@ -109,6 +112,7 @@ Sample Input:
 7 2
 6 1
 7 3
+x
 
 Output:
 
