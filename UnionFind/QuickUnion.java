@@ -31,70 +31,71 @@ import java.util.Scanner;
 public class QuickUnion
 {
 
-	private static int id[];
+    private static int id[];
 
-	public QuickUnion(int N)
-	{
-		id = new int[N];
-		for (int i = 0; i < N; i++)
-		{
-			id[i] = i;
-		}
-	}
+    public QuickUnion(int N)
+    {
+        id = new int[N];
+        for (int i = 0; i < N; i++)
+        {
+            id[i] = i;
+        }
+    }
 
-	int root(int i)
-	{
-		// root of i
-		while (i != id[i]) // while i is not its own parent
-		{
-			i = id[i]; // set i equal to its parent
-		}
-		// now i==id[i], meaning current i is equal to the root of the argument
-		// passed into the method
-		return i; // return the root of passed parameter
-	}
+    int root(int i)
+    {
+        // root of i
+        while (i != id[i]) // while i is not its own parent
+        {
+            i = id[i]; // set i equal to its parent
+        }
+        // now i==id[i], meaning current i is equal to the root of the argument
+        // passed into the method
+        return i; // return the root of passed parameter
+    }
 
-	boolean connected(int p, int q)
-	{
-		// checks if p and q are connected
-		return root(p) == root(q); // if p and q have same root, they are
-									// connected, else not connected
-	}
+    boolean connected(int p, int q)
+    {
+        // checks if p and q are connected
+        return root(p) == root(q); // if p and q have same root, they are
+        // connected, else not connected
+    }
 
-	void union(int p, int q)
-	{
-		// combine components containing p and q
-		id[root(p)] = root(q);
-		/*
+    void union(int p, int q)
+    {
+        if (connected(p, q)) return;
+        // combine components containing p and q
+        id[root(p)] = root(q);
+        /*
 		 * id of root(p) is equal to root(q)
 		 * set parent of root of p to root of q, so the root of p is now a child of root(q)
 		 */
-	}
+    }
 
-	public static void main(String[] args)
-	{
-		Scanner sc = new Scanner(System.in);
-		int N = Integer.parseInt(sc.nextLine().trim());
-		QuickUnion qu = new QuickUnion(N);
-		
-		String s;
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        int N = Integer.parseInt(sc.nextLine().trim());
+        QuickUnion qu = new QuickUnion(N);
 
-		while(true)
-		{
-			s = sc.nextLine().trim();
-			if (s.toLowerCase().equals("x")) break;
+        String s;
 
-			int p = Integer.parseInt(s.charAt(0)+"");
-			int q = Integer.parseInt(s.charAt(2)+"");
+        while (true)
+        {
+            s = sc.nextLine().trim();
+            if (s.toLowerCase().equals("x")) break;
 
-			qu.union(p,q);
-		}
-		
-		for (int i=0;i<id.length;i++)
-		{
-			System.out.println("node: "+i+", parent: "+id[i]+", root: "+qu.root(i));
-		}
-	}
+            int p = Integer.parseInt(s.charAt(0) + "");
+            int q = Integer.parseInt(s.charAt(2) + "");
+
+            qu.union(p, q);
+        }
+
+        for (int i = 0; i < id.length; i++)
+        {
+            System.out.println("node: " + i + ", parent: " + id[i] + ", root: " + qu.root(i));
+        }
+    }
 }
 
 

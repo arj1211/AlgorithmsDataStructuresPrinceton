@@ -24,34 +24,43 @@ import java.util.Scanner;
  * 					id[p] = id[q] )
  */
 
-public class QuickFind {
+public class QuickFind
+{
 
     private static int[] id;
 
-    public QuickFind(int N) {
+    public QuickFind(int N)
+    {
         id = new int[N];
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < N; i++)
+        {
             id[i] = i;
         }
     }
 
-    void union(int p, int q) {
-        for (int i = 0; i < id.length; i++) {
+    void union(int p, int q)
+    {
+        if (connected(p, q)) return;
+        for (int i = 0; i < id.length; i++)
+        {
             if (id[i] == id[p]) id[i] = id[q];
         }
     }
 
-    boolean connected(int p, int q) {
+    boolean connected(int p, int q)
+    {
         return id[p] == id[q];
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         Scanner sc = new Scanner(System.in);
         int N = Integer.parseInt(sc.nextLine());
         QuickFind qf = new QuickFind(N);
         String s;
 
-        while (true) {
+        while (true)
+        {
             s = sc.nextLine().trim();
             if (s.toLowerCase().equals("x")) break;
 
@@ -61,7 +70,8 @@ public class QuickFind {
             qf.union(p, q);
         }
 
-        for (int i = 0; i < id.length; i++) {
+        for (int i = 0; i < id.length; i++)
+        {
             System.out.println(i + " " + id[i]);
         }
     }
