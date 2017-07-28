@@ -29,7 +29,7 @@ public class PercolationVisualizer
 
     // delay in miliseconds (controls animation speed)
     //MY EDIT: was originally set to 100
-    private static final int DELAY = 20;
+    private static final int DELAY = 10;
 
     // draw n-by-n percolation system
     public static void draw(Percolation perc, int n)
@@ -80,11 +80,14 @@ public class PercolationVisualizer
         --------------------------------------------------*/
 
         //MY CODE ADDITION ------------------------------------------------
+
         Scanner sc = new Scanner(System.in);
         System.out.println("input file name without extension?:");
         String inp = "percolation/";
         inp += sc.next().trim();
         inp += ".txt";
+
+
         In in = new In(inp);
         int n = in.readInt();
         //-----------------------------------------------------------------
@@ -106,5 +109,7 @@ public class PercolationVisualizer
             StdDraw.show();
             StdDraw.pause(DELAY);
         }
+
+
     }
 }
