@@ -8,16 +8,16 @@ import edu.princeton.cs.algs4.StdStats;
 public class PercolationStats
 {
 
-    final private double[] fracOpen;
-    final private int T;
-    private int openSites = 0;
+    private static int openSites = 0;
+    private final double[] fracOpen;
+    private final int T;
 
     public PercolationStats(int n, int trials) // perform trials independent experiments on an n*n grid
     {
         if (n <= 0 || trials <= 0) throw new IllegalArgumentException("n or trials <= 0");
 
         fracOpen = new double[trials];
-        T = trials;
+        this.T = trials;
 
         for (int i = 0; i < T; i++)
         {

@@ -5,10 +5,10 @@ import edu.princeton.cs.algs4.WeightedQuickUnionUF;
 public class Percolation
 {
 
-    static final private int virtualTop = 0;
-    final private WeightedQuickUnionUF wQUUF;
-    final private int N;
-    final private int virtualBottom;
+    private static final int VIRTUAL_TOP = 0;
+    private final WeightedQuickUnionUF wQUUF;
+    private final int N;
+    private final int VIRTUAL_BOTTOM;
 
 
     private int openSites = 0;
@@ -18,8 +18,8 @@ public class Percolation
     public Percolation(int n) // create n*n grid, all sites blocked
     {
         if (n <= 0) throw new IllegalArgumentException("Call to Percolation() : grid dimensions invalid");
-        N = n;
-        virtualBottom = xyTo1D(N, N) + 1;
+        this.N = n;
+        VIRTUAL_BOTTOM = xyTo1D(N, N) + 1;
         open = new boolean[N + 1][N + 1]; // natural indexed
         wQUUF = new WeightedQuickUnionUF(N * N + 2); // extra for top and bottom virtual sites
     }
@@ -29,10 +29,11 @@ public class Percolation
         return (x - 1) * N + y;
     }
 
-//    private int xyTo1D_ind(int n, int m) //converts 2D natural coordinates to 1D natural index
-//    {
-//        return (n+1)*(m+1);
-//    }
+/*  private int xyTo1D_ind(int n, int m) //converts 2D natural coordinates to 1D natural index
+    {
+        return (n+1)*(m+1);
+    }
+    */
 
     public void open(int row, int col) // open site (row, col) if not open already
     {
@@ -42,8 +43,8 @@ public class Percolation
         open[row][col] = true;
         openSites++;
 
-        if (row == 1) wQUUF.union(virtualTop, xyTo1D(row, col));
-        if (row == N) wQUUF.union(virtualBottom, xyTo1D(row, col));
+        if (row == 1) wQUUF.union(VIRTUAL_TOP, xyTo1D(row, col));
+        if (row == N) wQUUF.union(VIRTUAL_BOTTOM, xyTo1D(row, col));
         if (((row - 1) >= 1) && open[row - 1][col]) // site above
         {
             wQUUF.union(xyTo1D(row - 1, col), xyTo1D(row, col));
@@ -73,7 +74,7 @@ public class Percolation
     {
         if (row < 1 || row > N || col < 1 || col > N)
             throw new IllegalArgumentException("Call to isFull() : row/col out of bounds");
-        return wQUUF.connected(virtualTop, xyTo1D(row, col));
+        return wQUUF.connected(VIRTUAL_TOP, xyTo1D(row, col));
     }
 
     public int numberOfOpenSites() // # of open sites
@@ -83,7 +84,7 @@ public class Percolation
 
     public boolean percolates() // does the system percolate?
     {
-        return wQUUF.connected(virtualTop, virtualBottom);
+        return wQUUF.connected(VIRTUAL_TOP, VIRTUAL_BOTTOM);
     }
 
 
@@ -98,13 +99,22 @@ public class Percolation
         {
             int r = (int) (Math.random() * 4) + 1;
             int c = (int) (Math.random() * 4) + 1;
-            System.out.println("[" + r + ", " + c + "]");
+            //System.out.println("[" + r + ", " + c + "]");
             p.open(r, c);
+            System.out.println("p.numberOfOpenSites() = " + p.numberOfOpenSites());
+            if (p.numberOfOpenSites() == 231)
+            {
+                System.out.println("isOpen(18,1) = "+p.isOpen(18,1));
+                System.out.println("percolates = "+p.percolates());
+                System.out.println("numberOfOpenSites() = "+p.numberOfOpenSites());
+                System.out.println("isFull(18,1) = "+p.isFull(18,1));
+                break;
+            }
         }
 
         System.out.println("Percolates: " + p.percolates());
         System.out.println("Open Sites: " + p.numberOfOpenSites());
 
-    } */
-
+    }
+*/
 }
